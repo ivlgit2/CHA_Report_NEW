@@ -9,12 +9,12 @@ sap.ui.define([
 	"use strict";
 
 	return Controller.extend("bri.CHA_Report.controller.Report_List", {
-
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf bri.CHA_Report.view.Report_List
 		 */
+		 
 		onInit: function () {
 			this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 			this.oRouter.attachRoutePatternMatched(this._handleRouteMatched, this);
