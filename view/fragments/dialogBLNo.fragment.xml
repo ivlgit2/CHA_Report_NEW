@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Bill of Lading No" class="sapUiPopupWithPadding" items="{path: 'ComboModel>/xBRIxi_iidbldtl'}"
+		liveChange="_handleValueHelpSearch_BLNo" confirm="_handleValueHelpClose_BLNo" cancel="_handleValueHelpClose_BLNo">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{ComboModel>bolnr}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

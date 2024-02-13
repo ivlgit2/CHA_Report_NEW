@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Document Number" class="sapUiPopupWithPadding" items="{path: 'docnoModel>/xbrixi_iidcha',sorter : {path:'docnr',descending: true}}"
+		liveChange="_handleValueHelpSearch_ReqNoTo" confirm="_handleValueHelpClose_ReqNoTo" cancel="_handleValueHelpClose_ReqNoTo">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{docnoModel>docnr}" description="{docnoModel>chacode}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

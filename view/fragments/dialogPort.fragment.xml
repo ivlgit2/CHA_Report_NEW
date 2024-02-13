@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Port" class="sapUiPopupWithPadding" items="{path: 'CMNModel>/xBRIxI_PORT_CODTYP'}"
+		liveChange="_handleValueHelpSearch_Port" confirm="_handleValueHelpClose_Port" cancel="_handleValueHelpClose_Port">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{CMNModel>codtyp}" description="{CMNModel>coddesc}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

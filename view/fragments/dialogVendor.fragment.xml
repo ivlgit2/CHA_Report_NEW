@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="CHA Vendor Code" class="sapUiPopupWithPadding" items="{path: 'VendorNosearchHelp>/results'}"
+		liveChange="_handleValueHelpSearch_Vendor" confirm="_handleValueHelpClose_Vendor" cancel="_handleValueHelpClose_Vendor">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{VendorNosearchHelp>lifnr}" description="{VendorNosearchHelp>name1}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

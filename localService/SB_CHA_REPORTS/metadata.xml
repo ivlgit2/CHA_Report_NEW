@@ -1,0 +1,90 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+	xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/></edmx:Reference>
+	<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+		Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value"><edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_xbrixsd_cha_reports" xml:lang="en" sap:schema-version="1">
+			<EntityType Name="xBRIxCE_CHA_REPORTSType" sap:label="Custom Entity for CHA report" sap:content-version="1">
+				<Key><PropertyRef Name="parameter_1"/><PropertyRef Name="mandt"/></Key><Property Name="parameter_1" Type="Edm.String" Nullable="false" MaxLength="200" sap:display-format="UpperCase" sap:label="CHARACTER 200"/><Property Name="mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Client"/><Property Name="docnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Document Number"/><Property Name="chqdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/><Property Name="vchdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/><Property Name="chacode" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="char 20"/><Property Name="agnchqdt" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/><Property Name="totalRecord" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="char 20"/><NavigationProperty Name="Parameters" Relationship="cds_xbrixsd_cha_reports.assoc_B98DB50AA4EDCADA37D0DAF4B0891345"
+					FromRole="ToRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345" ToRole="FromRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345" sap:filterable="false"/></EntityType>
+			<EntityType Name="xBRIxCE_CHA_REPORTSParameters" sap:semantics="parameters" sap:content-version="1">
+				<Key><PropertyRef Name="parameter_1"/></Key><Property Name="parameter_1" Type="Edm.String" Nullable="false" MaxLength="200" sap:display-format="UpperCase" sap:parameter="mandatory"
+					sap:label="CHARACTER 200" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/><NavigationProperty Name="Set" Relationship="cds_xbrixsd_cha_reports.assoc_B98DB50AA4EDCADA37D0DAF4B0891345"
+					FromRole="FromRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345" ToRole="ToRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345"/></EntityType>
+			<Association Name="assoc_B98DB50AA4EDCADA37D0DAF4B0891345" sap:content-version="1"><End Type="cds_xbrixsd_cha_reports.xBRIxCE_CHA_REPORTSParameters" Multiplicity="1" Role="FromRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345"/><End Type="cds_xbrixsd_cha_reports.xBRIxCE_CHA_REPORTSType" Multiplicity="*" Role="ToRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345"/></Association>
+			<EntityContainer Name="cds_xbrixsd_cha_reports_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true"
+				sap:supported-formats="atom json xlsx"><EntitySet Name="xBRIxCE_CHA_REPORTSSet" EntityType="cds_xbrixsd_cha_reports.xBRIxCE_CHA_REPORTSType" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/><EntitySet Name="xBRIxCE_CHA_REPORTS" EntityType="cds_xbrixsd_cha_reports.xBRIxCE_CHA_REPORTSParameters" sap:creatable="false"
+				sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+				<AssociationSet Name="assoc_B98DB50AA4EDCADA37D0DAF4B0891345" Association="cds_xbrixsd_cha_reports.assoc_B98DB50AA4EDCADA37D0DAF4B0891345"
+					sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"><End EntitySet="xBRIxCE_CHA_REPORTS" Role="FromRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345"/><End EntitySet="xBRIxCE_CHA_REPORTSSet" Role="ToRole_assoc_B98DB50AA4EDCADA37D0DAF4B0891345"/></AssociationSet>
+			</EntityContainer>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_cha_reports.cds_xbrixsd_cha_reports_Entities"><Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+				<Annotation Term="Aggregation.ApplySupported">
+					<Record>
+						<PropertyValue Property="Transformations">
+							<Collection>
+								<String>aggregate</String>
+								<String>groupby</String>
+								<String>filter</String>
+							</Collection>
+						</PropertyValue><PropertyValue Property="Rollup" EnumMember="None"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm"
+				Target="cds_xbrixsd_cha_reports.cds_xbrixsd_cha_reports_Entities/xBRIxCE_CHA_REPORTS">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="NonFilterableProperties">
+							<Collection>
+								<PropertyPath>parameter_1</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.NavigationRestrictions">
+					<Record>
+						<PropertyValue Property="RestrictedProperties">
+							<Collection>
+								<Record><PropertyValue Property="NavigationProperty" NavigationPropertyPath="Parameters"/>
+									<PropertyValue Property="FilterRestrictions">
+										<Record><PropertyValue Property="Filterable" Bool="false"/></Record>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.SortRestrictions">
+					<Record>
+						<PropertyValue Property="NonSortableProperties">
+							<Collection>
+								<PropertyPath>parameter_1</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_xbrixsd_cha_reports.cds_xbrixsd_cha_reports_Entities">
+				<Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+					<Record Type="Org.OData.Capabilities.V1.BatchSupportType"><PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/></Record>
+				</Annotation>
+			</Annotations><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/BRI/SB_CHA_REPORTS/$metadata"/><atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/BRI/SB_CHA_REPORTS/$metadata"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

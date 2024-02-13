@@ -1,0 +1,198 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "bri.CHA_Report",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"CMN_SERVICES": {
+				"uri": "/abap/sap/opu/odata/BRI/CMN_SERVICES/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"SB_IIDCHA": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_IIDCHA/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_IIDCHA/metadata.xml"
+				}
+			},
+			"SB_REPORT_DASHBOARD": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_REPORT_DASHBOARD/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_REPORT_DASHBOARD/metadata.xml"
+				}
+			},
+			"SB_BOEIID": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_BOEIID/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_BOEIID/metadata.xml"
+				}
+			},
+			"SB_CHA_REPORTS": {
+				"uri": "/abap/sap/opu/odata/BRI/SB_CHA_REPORTS/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/SB_CHA_REPORTS/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "bri.CHA_Report.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "bri.CHA_Report.i18n.i18n"
+				}
+			},
+			"CMN_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "CMN_SERVICES",
+				"preload": true
+			},
+			"CHA_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_IIDCHA",
+				"preload": true
+			},
+			"FiltersModel": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_REPORT_DASHBOARD",
+				"preload": true
+			},
+			"BOE_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_BOEIID",
+				"preload": true
+			},
+			"TotalHederCount_Model": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "SB_CHA_REPORTS",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "utilities/Validation.js"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "bri.CHA_Report.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "Report_List",
+					"pattern": "",
+					"target": [
+						"TargetReport_List"
+					]
+				}
+			],
+			"targets": {
+				"TargetApp": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "App",
+					"viewName": "App"
+				},
+				"TargetReport_List": {
+					"viewType": "XML",
+					"viewName": "Report_List"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

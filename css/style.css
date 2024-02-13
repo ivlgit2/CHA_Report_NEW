@@ -1,0 +1,72 @@
+/* Enter your custom styles here */
+
+.sapUiBody .sapMPageBgStandard {
+    background-image: url('../assets/img/ImpExptBckgrnd1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.filterbarBackgroundStyle {
+    opacity: 0.9;
+    border-radius: 10px;
+}
+
+.sapMShellLogoImg {
+    visibility: hidden;
+}
+
+.sapUiTableM {
+    opacity: 0.9;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.sapUiTableCnt {
+    border-radius: 0.3rem;
+}
+
+.ClsClearBg {
+    background-image: none !important;
+}
+
+.formHeaderBackground .sapUiForm .sapUiFormTitle {
+    background-color: #ecf4fc;
+}
+
+.sapMITBContainerContent {
+    padding: 5px;
+    opacity: 0.9;
+}
+
+.sapMITBContent {
+    border-radius: 1em;
+}
+
+.clscurrency .sapUiUfdCurrencyAlign {
+    text-align: left;
+}
+
+.clsAlignElements .sapUiUfdCurrencyAlign {
+    padding-top: 14px;
+    padding-bottom: 7px;
+    text-align: left;
+}
+
+.clsFooter {
+    margin-left: 317px;
+    margin-right: 9px;
+    border-radius: 0.3rem;
+}
+
+.vBoxBackgroundStyle {
+    background-color: #ecf4fc;
+    opacity: 0.9;
+    margin: 0.75rem;
+    border-radius: 0.3rem;
+}
+
+.sapMITHBackgroundDesignSolid {
+    background-color: ghostwhite;
+}

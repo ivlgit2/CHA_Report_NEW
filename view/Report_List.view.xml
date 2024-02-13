@@ -1,0 +1,369 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:t="sap.ui.table"
+	controllerName="bri.CHA_Report.controller.Report_List" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>title}">
+		<content>
+			<fb:FilterBar id="filterBar" reset="onReset" search="onSearch" clear="onClear" showRestoreButton="true" showClearButton="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Default Filters" name="A1" label="CHA Code"
+						labelTooltip="CHA Vendor Code">
+						<fb:control>
+							<Input id="idVendor" type="Text" textFormatMode="Value" showSuggestion="true" showValueHelp="true"
+								valueHelpRequest="handleReqVendorValueHelp" suggestionItems="{path:'VendorNosearchHelp>/vendor', templateShareable:true}"
+								valueLiveUpdate="true" enabled="true" valueHelpOnly="true">
+								<suggestionItems>
+									<core:ListItem key="{VendorNosearchHelp>lifnr}" text="{VendorNosearchHelp>lifnr}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Default Filters" name="B1" label="Document No From">
+						<fb:control>
+							<Input id="docnoFrm" type="Text" showSuggestion="true" showValueHelp="true" valueHelpRequest="SelectDocNo"
+								suggestionItems="{path:'CHA_Model>/xbrixi_iidcha', templateShareable:true}">
+								<suggestionItems>
+									<core:ListItem key="{CHA_Model>docnr}" text="{CHA_Model>docnr}" additionalText="{CHA_Model>chacode}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Default Filters" name="C1" label="Document No To">
+						<fb:control>
+							<Input id="docnoTo" type="Text" showSuggestion="true" showValueHelp="true" valueHelpRequest="SelectDocNo"
+								suggestionItems="{path:'CHA_Model>/xbrixi_iidcha', templateShareable:true}">
+								<suggestionItems>
+									<core:ListItem key="{CHA_Model>docnr}" text="{CHA_Model>docnr}" additionalText="{CHA_Model>chacode}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<!--	<fb:FilterGroupItem visibleInFilterBar="true" groupName="G1" groupTitle="Default Filters" name="D1" label="Date">
+						<fb:control>
+							<DateRangeSelection id="openDate" delimiter="-" displayFormat="dd/MM/yyyy"/>
+						</fb:control>
+					</fb:FilterGroupItem>-->
+					<!--	<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" groupTitle="Default Filters" name="E1" label="BU" labelTooltip="Business Unit">
+						<fb:control>
+							<Input id="idBU" type="Text" textFormatMode="Value" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleReqBUValueHelp"
+								suggestionItems="{path:'ComboModel>/xBRIxI_Business_Unit', templateShareable:true}" valueLiveUpdate="true">
+								<suggestionItems>
+									<core:ListItem key="{ComboModel>bsuunit}" text="{ComboModel>bsuunit}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>-->
+					<!--					<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" groupTitle="Default Filters" name="G1" label="SBU" labelTooltip="SBU">
+						<fb:control>
+							<Input id="idSBU" type="Text" textFormatMode="Value" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleReqSBUValueHelp"
+								suggestionItems="{path:'VendorNosearchHelp>/vendor', templateShareable:true}" valueLiveUpdate="true">
+								<suggestionItems>
+									<core:Item key="{VendorNosearchHelp>lifnr}" text="{VendorNosearchHelp>lifnr}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>-->
+					<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" groupTitle="Default Filters" name="H1" label="Custom BOE NO"
+						labelTooltip="Custom BOE Number">
+						<fb:control>
+							<Input id="idCustBOENo" type="Text" textFormatMode="Value" showSuggestion="true" showValueHelp="true"
+								valueHelpRequest="handleReqCustBOENoValueHelp" suggestionItems="{path:'ComboModel>/xBRIxI_impdpsno', templateShareable:true}"
+								valueLiveUpdate="true">
+								<suggestionItems>
+									<core:Item key="{ComboModel>impdpsno}" text="{ComboModel>impdpsno}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" groupTitle="Default Filters" name="I1" label="Shipment Type"
+						labelTooltip="Shipment Type">
+						<fb:control>
+							<ComboBox id="idShpTyp" items="{ path: 'BOEModel>/xBRIxCE_shptyp', templateShareable: true }">
+								<core:Item key="{BOEModel>code}" text="{BOEModel>shptyp}"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" groupTitle="Default Filters" name="J1" label="Mode of Shipment"
+						labelTooltip="Mode of Shipment">
+						<fb:control>
+							<ComboBox id="idShpMod" items="{ path: 'ComboModel>/xBRIxI_mode_of_shipment', templateShareable: true }">
+								<core:Item key="{ComboModel>shipmode}" text="{ComboModel>shipmode}"/>
+							</ComboBox>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" groupTitle="Default Filters" name="K1" label="Port" labelTooltip="Port">
+						<fb:control>
+							<Input id="idPort" type="Text" textFormatMode="Value" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleReqPortValueHelp"
+								suggestionItems="{path:'CMNModel>/xBRIxI_PORT_CODTYP', templateShareable:true}" valueLiveUpdate="true">
+								<suggestionItems>
+									<core:Item key="{CMNModel>codtyp}" text="{CMNModel>coddesc}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="G1" visibleInFilterBar="true" groupTitle="Default Filters" name="L1" label="B/L No"
+						labelTooltip="Bill of Lading Number">
+						<fb:control>
+							<Input id="idBLNo" type="Text" textFormatMode="Value" showSuggestion="true" showValueHelp="true" valueHelpRequest="handleReqBLNoValueHelp"
+								suggestionItems="{path:'ComboModel>/xBRIxi_iidbldtl', templateShareable:true}" valueLiveUpdate="true">
+								<suggestionItems>
+									<core:Item key="{ComboModel>bolnr}" text="{ComboModel>bolnr}"/>
+								</suggestionItems>
+							</Input>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem visibleInFilterBar="true" groupName="E1" groupTitle="Default Filters" name="M1" label="CHA Bill Send Date"
+						labelTooltip="CHA Bill Send Date">
+						<fb:control>
+							<!--<DatePicker id="idvchdt" displayFormat="dd/MM/yyyy" valueFormat="yyyy-MM-ddT00:00:00"/>-->
+							<DateRangeSelection id="idvchdt" delimiter=" to " dateValue="{path:'/dateValueDRS1'}"
+									secondDateValue="{path:'/secondDateValueDRS1'}" minDate="{path:'/dateMinDRS1'}" maxDate="{path:'/dateMaxDRS1'}" change="handleChange"
+									displayFormat="{i18n>CLINDateFormat}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem visibleInFilterBar="true" groupName="E1" groupTitle="Default Filters" name="N1" label="CHA Received Send Date"
+						labelTooltip="CHA Received Send Date">
+						<fb:control>
+							<!--<DatePicker id="idchqdt" displayFormat="dd/MM/yyyy" valueFormat="yyyy-MM-ddT00:00:00"/>-->
+							<DateRangeSelection id="idchqdt" delimiter=" to " dateValue="{path:'/dateValueDRS1'}"
+									secondDateValue="{path:'/secondDateValueDRS1'}" minDate="{path:'/dateMinDRS1'}" maxDate="{path:'/dateMaxDRS1'}" change="handleChange"
+									displayFormat="{i18n>CLINDateFormat}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem visibleInFilterBar="true" groupName="E1" groupTitle="Default Filters" name="O1" label="Agency Bill Send Date"
+						labelTooltip="Agency Bill Send Date">
+						<fb:control>
+							<!--<DatePicker id="idagnvchdt" displayFormat="dd/MM/yyyy"/>-->
+							<DateRangeSelection id="idagnvchdt" delimiter=" to " dateValue="{path:'/dateValueDRS1'}"
+									secondDateValue="{path:'/secondDateValueDRS1'}" minDate="{path:'/dateMinDRS1'}" maxDate="{path:'/dateMaxDRS1'}" change="handleChange"
+									displayFormat="{i18n>CLINDateFormat}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem visibleInFilterBar="true" groupName="E1" groupTitle="Default Filters" name="P1" label="Agency Received Send Date"
+						labelTooltip="Agency Received Send Date">
+						<fb:control>
+							<!--<DatePicker id="idagnchqdt" displayFormat="dd/MM/yyyy"/>-->
+							<DateRangeSelection id="idagnchqdt" delimiter=" to " dateValue="{path:'/dateValueDRS1'}"
+									secondDateValue="{path:'/secondDateValueDRS1'}" minDate="{path:'/dateMinDRS1'}" maxDate="{path:'/dateMaxDRS1'}" change="handleChange"
+									displayFormat="{i18n>CLINDateFormat}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+			<t:Table rows="{FilterData>/results}" id="tbDocuments" ariaLabelledBy="title" selectionMode="None" visible="false" visibleRowCount="5">
+				<t:extension>
+					<Toolbar class="vBoxBackgroundStyle">
+						<content>
+							<Button id="prevBtn" press="onPressLessDetails" icon="sap-icon://close-command-field" tooltip="Previous Details"/>
+							<ToolbarSpacer/>
+							<!--<Label text="Documents"/>-->
+							<Title id="doctitle" text="Documents"/>
+							<ToolbarSpacer/>
+							<Button id="nextBtn" press="onPressMoreDetails" icon="sap-icon://open-command-field" tooltip="More Details"/>
+						</content>
+					</Toolbar>
+				</t:extension>
+				<t:columns>
+					<t:Column id="docno">
+						<Label wrapping="true" text="SAP BOE No"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>docno}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="docnr" visible="{primaryState>/visible}">
+						<Label wrapping="true" text="SAP CHA No"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>docnr}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="agnvendor" visible="{primaryState>/visible}">
+						<Label wrapping="true" text="CHA Name"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>agnvendor}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="billno" visible="{primaryState>/visible}">
+						<Label wrapping="true" text="CHA Bill No."/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>billno}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="billdt" visible="{primaryState>/visible}">
+						<Label wrapping="true" text="CHA Bill Date"/>
+						<t:template>
+							<Text wrapping="false" text="{ path: 'FilterData>billdt', formatter: 'CHA_Report.Formatter.formatDate' }"/>
+							<!--<Text  wrapping="false" text="{ path: 'FilterData>billdt'}" wrapping="false"/>-->
+						</t:template>
+					</t:Column>
+					<t:Column id="gstno" visible="{primaryState>/visible}">
+						<Label wrapping="true" text="CHA Agency GST No."/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>gstno}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="thpvend_nam" visible="{secondaryState>/visible}">
+						<Label wrapping="true" text="3rd party Vendor Name"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>thpvend_nam}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="thpvend_bilno" visible="{secondaryState>/visible}">
+						<Label wrapping="true" text="3rd party Vendor Bill No."/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>thpvend_bilno}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="thpvend_bildt" visible="{secondaryState>/visible}">
+						<Label wrapping="true" text="3rd party Vendor Bill Date"/>
+						<t:template>
+							<Text wrapping="false" text="{ path: 'FilterData>thpvend_bildt', formatter: 'CHA_Report.Formatter.formatDate' }"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="thpvend_gstno" visible="{secondaryState>/visible}">
+						<Label wrapping="true" text="3rd party Vendor GST Number"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>thpvend_gstno}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="catyp" visible="{secondaryState>/visible}">
+						<Label wrapping="true" text="Reimbursement/ Agency"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>catyp}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="type" visible="{secondaryState>/visible}">
+						<Label wrapping="true" text="Charge Code Type"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>type}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="subtyp" visible="{secondaryState>/visible}">
+						<Label wrapping="true" text="Charge Code Sub Type"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>subtyp}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="base_amt" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="Base Amount"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>base_amt}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="cgst" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="CGST Amount"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>cgst}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="sgst" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="SGST Amount"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>sgst}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="igst" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="IGST Amount"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>igst}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="tot_bilamt" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="Total Bill Amount"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>tot_bilamt}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="saccod" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="SAC code"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>saccod}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="vchdt" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="BILL Submission Date"/>
+						<t:template>
+							<Text wrapping="false" text="{ path: 'FilterData>vchdt', formatter: 'CHA_Report.Formatter.formatDate' }"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="chqdt" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="BILL ReceivedDate"/>
+						<t:template>
+							<Text wrapping="false" text="{ path: 'FilterData>chqdt', formatter: 'CHA_Report.Formatter.formatDate' }"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="paydt" visible="{tertiaryState>/visible}">
+						<Label wrapping="true" text="Payment Received date"/>
+						<t:template>
+							<Text wrapping="false" text="{ path: 'FilterData>paydt', formatter: 'CHA_Report.Formatter.formatDate' }"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="bsuunit" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="BU"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>bsuunit}"/>
+						</t:template>
+					</t:Column>
+					<!--	
+					<t:Column id="sbu" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="SBU"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>sbu}"/>
+						</t:template>
+					</t:Column>-->
+					<t:Column id="shpbilno" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="CUSTOMS BOE NO."/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>shpbilno}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="shpbildt" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="CUSTOMS BOE DATE"/>
+						<t:template>
+							<Text wrapping="false" text="{ path: 'FilterData>shpbildt', formatter: 'CHA_Report.Formatter.formatDate' }"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="shptyp" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="SHIPMENT TYPE (LCL/FCL)"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>shptyp}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="modtran" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="MODE OF SHIPMENT (AIR/SEA)"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>modtran}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="port" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="ARRIVAL PORT"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>port}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="bolnr" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="B/L NO."/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>bolnr}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="grswght" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="B/L WEIGHT"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>grswght}"/>
+						</t:template>
+					</t:Column>
+					<t:Column id="tot_no_cont" visible="{quaternaryState>/visible}">
+						<Label wrapping="true" text="Total No.of Containers"/>
+						<t:template>
+							<Text wrapping="false" text="{FilterData>tot_no_cont}"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+		</content>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://download-from-cloud" text="Download Report" type="Accept" press="onDownloadData" visible="false" id="dwnldBtn"></Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

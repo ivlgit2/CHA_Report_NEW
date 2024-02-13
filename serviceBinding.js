@@ -1,0 +1,1 @@
+function initModel(){var a="/abap/sap/opu/odata/BRI/SB_CHA_REPORTS/";var e=new sap.ui.model.odata.ODataModel(a,true);sap.ui.getCore().setModel(e)}

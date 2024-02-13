@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog title="Custom BOE No" class="sapUiPopupWithPadding" items="{path: 'ComboModel>/xBRIxI_impdpsno'}"
+		liveChange="_handleValueHelpSearch_CBN" confirm="_handleValueHelpClose_CBN" cancel="_handleValueHelpClose_CBN">
+		<StandardListItem iconDensityAware="false" iconInset="false" title="{ComboModel>impdpsno}"/>
+	</SelectDialog>
+</core:FragmentDefinition>
