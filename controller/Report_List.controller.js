@@ -345,7 +345,7 @@ sap.ui.define([
 				var _self = this;
 				this.userId = sap.ushell.Container.getService("UserInfo").getId().toUpperCase();
 				// this.userId = "NIKHILA.MOREIRA@IVLDSP.COM";
-				this.userId = "XXXX@YOPMAIL.COM";
+				// this.userId = "XXXX@YOPMAIL.COM";
 				this.vendorDetails = {
 					results: []
 				};
